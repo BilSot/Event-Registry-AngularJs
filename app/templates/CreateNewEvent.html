@@ -1,0 +1,46 @@
+<div style="padding-left: 20px; padding-right: 20px">
+    <div class="container">
+        <h1>Create New Event</h1>
+        <hr/>
+        <form name="eventForm">
+            <div ng-init="setForm(eventForm);"></div>
+            <fieldset>
+                <label for="name">Event's name</label>
+                <input name="name" id="name" ng-model="eventInfo.name" required type="text"
+                       placeholder="Enter the event's name"/>
+
+                <label for="date">Event's date</label>
+                <input name="date" id="date" type="text" date-keys="test" ng-model="eventInfo.date" ng-pattern="dateRegex"
+                       required placeholder="Enter the event's date in format dd/MM/yyyy"/>
+
+                <label for="time">Event's time</label>
+                <input name="time" id="time" type="text" ng-model="eventInfo.time"
+                       placeholder="Enter the event's start time and end time"/>
+
+                <label for="address">Event's location</label>
+                <input name="address" id="address" type="text" ng-model="eventInfo.location.address"
+                       placeholder="Address"/>
+                <br/>
+                <input name="city" id="city" type="text" class="input-medium" ng-model="eventInfo.location.city"
+                       placeholder="City"/>
+                <input name="country" id="country" type="text" class="input-medium"
+                       ng-model="eventInfo.location.country" placeholder="Country"/>
+
+                <label for="imageUrl">Image's url</label>
+                <input name="imageUrl" id="imageUrl" type="url" class="input-xlarge" ng-model="eventInfo.imageUrl"
+                       placeholder="Url of image..."/>
+
+            </fieldset>
+            <br/>
+            <img ng-src="{{eventInfo.imageUrl}}" src=""/>
+            <br/>
+            <br/>
+
+            <button type="submit" ng-click="saveEvent(eventInfo, eventForm)" ng-disabled="eventForm.$invalid"
+                    class="btn btn-primary">Save
+            </button>
+            <button type="button" ng-click="cancel()" class="btn btn-info">Cancel</button>
+        </form>
+    </div>
+
+</div>

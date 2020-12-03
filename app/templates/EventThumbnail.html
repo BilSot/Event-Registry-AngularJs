@@ -1,0 +1,23 @@
+<a href="event/{{eventInfo.id}}">
+    <div class="well hoverwell">
+        <div class="row">
+            <h2 class="span6" ng-click="triggerClick()">{{eventInfo.name}}</h2>
+        </div>
+        <div class="row">
+            <span class="span1">Date: </span>
+            <span>{{eventInfo.date}}</span>
+        </div>
+        <div class="row">
+            <span class="span1">Time: </span>
+            <span>{{eventInfo.time}}</span>
+        </div>
+        <div class="row">
+            <span class="span1">Location: </span>
+            <span>{{eventInfo.location.address}}</span>
+        </div>
+        <div class="row">
+            <span class="span1">&nbsp; </span>
+            <span>{{eventInfo.location.city}}, {{eventInfo.location.province}}</span>
+        </div>
+    </div>
+</a>

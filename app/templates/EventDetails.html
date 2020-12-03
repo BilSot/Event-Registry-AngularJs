@@ -1,0 +1,59 @@
+<div style="padding-left: 20px; padding-right: 20px">
+    <img ng-src="{{eventInfo.imageUrl}}" alt="angular-logo"/>
+    <div class="row">
+        <div class="span11">
+            <h2>{{eventInfo.name}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span3">
+            <div>
+                <strong>Date: </strong>
+                {{eventInfo.date | date: 'dd/MM/yyyy'}}
+            </div>
+            <div>
+                <strong>Time: </strong>
+                {{eventInfo.time}}
+            </div>
+        </div>
+        <div class="span4">
+            <address>
+                <strong>Address: </strong><br/>
+                {{eventInfo.location.address}} <br/>
+                {{eventInfo.location.city}}, {{eventInfo.location.province}}
+            </address>
+        </div>
+    </div>
+    <hr/>
+
+    <h3>Sessions</h3>
+    <select ng-model="sortSessionsBy">
+        <option selected value="name">Name</option>
+        <option value="-upvoteCount">Votes</option>
+    </select>
+    <select ng-model="query.level">
+        <option selected value="">All</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+    </select>
+    <ul class="thumbnails">
+        <li ng-repeat="session in eventInfo.sessions | orderBy: sortSessionsBy | filter: query">
+            <div class="row session">
+                <vote-session upvote="addVote(session)" downvote="removeVote(session)"
+                              count="session.upVoteCount"></vote-session>
+                <div class="well span9">
+                    <collapsible title="{{session.name}}">
+                        <h6 style="margin-top: -10px">
+                            {{session.presenter}}
+                        </h6>
+                        <span>Duration: {{session.duration | durations}}</span><br/>
+                        <span>Level: {{session.level}}</span>
+                        <p>{{session.abstract}}</p>
+                    </collapsible>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,9 @@
+<div>
+    <h1>Events</h1>
+    <hr/>
+    <ul class="thumbnails">
+        <li ng-repeat="eventInfo in eventsList|orderBy:sortorder" class="span5">
+            <event-thumbnail event-info-dir="eventInfo" custom-click="showMe(test)"></event-thumbnail>
+        </li>
+    </ul>
+</div>
